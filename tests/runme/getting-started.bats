@@ -15,7 +15,7 @@ fi
 RUNME_FLAGS="--chdir $FILE_PATH --filename _index.md"
 RUNME_RUN_CMD="$BINARY run $RUNME_FLAGS"
 
-REMOTE="skip" # set to 'skip' to omit all remote steps (for dev)
+REMOTE="" # set to 'skip' to omit all remote steps (for dev)
 
 DETIK_CLIENT_NAME="kubectl"
 
