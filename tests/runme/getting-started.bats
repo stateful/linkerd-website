@@ -6,16 +6,29 @@ load 'helpers/bats-detik/lib/detik'
 if [ -z $FROM_CI ]
 then
   FILE_PATH=../../linkerd.io/content/2.12/getting-started
+  BINARY=./runme
 else
   FILE_PATH=linkerd.io/content/2.12/getting-started
+  BINARY=./linkerd.io/runme
 fi
 
 RUNME_FLAGS="--chdir $FILE_PATH --filename _index.md"
-RUNME_RUN_CMD="runme run $RUNME_FLAGS"
+RUNME_RUN_CMD="$BINARY run $RUNME_FLAGS"
 
-REMOTE="" # set to 'skip' to omit all remote steps (for dev)
+REMOTE="skip" # set to 'skip' to omit all remote steps (for dev)
 
 DETIK_CLIENT_NAME="kubectl"
+
+@test "Setup environment" {
+  run $RUNME_RUN_CMD setup-env
+  assert_success
+}
+
+@test "Test environment" {
+  run $RUNME_RUN_CMD print-env
+  assert_line -p "Hello World!"
+  assert_success
+}
 
 @test "Verify kubectl version step" {
   run $RUNME_RUN_CMD kubectl-version

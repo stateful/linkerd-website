@@ -18,12 +18,6 @@ jobs:
         with:
           go-version: '>=1.17.0'
       - run: go version          
-      - name: Install runme
-        run: |
-          go install github.com/stateful/runme@latest
-      - name: Check runme
-        run: |
-          runme --version
       - id: 'gcloud-auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v1'
@@ -58,16 +52,21 @@ jobs:
       - name: 'Initialize Git submodules'
         run: |
           git submodule update --init
+
+      - name: Check runme
+        run: |
+          ./linkerd.io/runme --version
       
       - name: Start Runme Server
         run: |
-          runme server --address ${{ vars.RUNME_ADDRESS }} --runner &
+          ./linkerd.io/runme server --address ${{ vars.RUNME_ADDRESS }} --runner &
 
       - name: 'Run bats tests'
         env:
           NO_COLOR: true
           FROM_CI: true
           RUNME_SERVER_ADDR: ${{ vars.RUNME_ADDRESS }}
+          RUNME_SESSION_STRATEGY: recent
         shell: sh
         run: |
           npx bats $GITHUB_WORKSPACE/tests/runme/getting-started.bats

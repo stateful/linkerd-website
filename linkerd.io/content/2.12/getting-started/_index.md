@@ -25,6 +25,14 @@ Finally, you'll "mesh" a application by adding Linkerd's *data plane* to it.
 
 ## Step 0: Setup
 
+```bash { name=setup-env }
+export TEST_VAR="Hello World!"
+```
+
+```bash { name=print-env }
+echo "$TEST_VAR"
+```
+
 Before anything else, we need to ensure you have access to modern Kubernetes
 cluster and a functioning `kubectl` command on your local machine.  (If you
 don't already have a Kubernetes cluster, one easy option is to run one on your
