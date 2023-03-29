@@ -142,7 +142,7 @@ allow the user to vote on their favorite emojis.
 Install Emojivoto into the `emojivoto` namespace by running:
 
 ```bash
-curl --proto https --tlsv1.2 -sSfL https://run.linkerd.io/emojivoto.yml \
+curl --proto https --tlsv1.2 -sSf http://run.linkerd.io/emojivoto.yml \
   | kubectl apply -f -
 ```
 
