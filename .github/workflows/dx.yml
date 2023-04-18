@@ -50,7 +50,7 @@ jobs:
           serverAddress: ${{ vars.RUNME_ADDRESS }}
           run: |
             pwd
-            npx bats ${{ env.GITHUB_WORKSPACE }}/tests/runme/getting-started.bats
+            npx bats ./tests/runme/getting-started.bats
         env:
           NO_COLOR: true
           FROM_CI: true
