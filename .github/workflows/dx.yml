@@ -49,7 +49,7 @@ jobs:
           cwd: ./tests/runme
           filename: TEST.md
           serverAddress: ${{ vars.RUNME_ADDRESS }}
-          run: npx bats $GITHUB_WORKSPACE/tests/runme/getting-started.bats
+          run: npx bats ${{ env.GITHUB_WORKSPACE }}/tests/runme/getting-started.bats
         env:
           NO_COLOR: true
           FROM_CI: true
