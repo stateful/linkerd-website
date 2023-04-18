@@ -48,13 +48,10 @@ jobs:
         with:
           cwd: ./tests/runme
           filename: TEST.md
-          id: |
-            kubectl-version
-            linkerd-version
-            test
+          serverAddress: ${{ vars.RUNME_ADDRESS }}
+          run: npx bats $GITHUB_WORKSPACE/tests/runme/getting-started.bats
         env:
           NO_COLOR: true
           FROM_CI: true
           RUNME_SERVER_ADDR: ${{ vars.RUNME_ADDRESS }}
-          
       
