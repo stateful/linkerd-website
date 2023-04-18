@@ -46,6 +46,8 @@ jobs:
       - name: Start Runme Server
         uses: stateful/runme-action@v1
         with:
+          cwd: ./tests/runme
+          filename: TEST.md
           id: |
             kubectl-version
             linkerd-version
