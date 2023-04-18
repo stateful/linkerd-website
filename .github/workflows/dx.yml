@@ -31,6 +31,10 @@ jobs:
         with:
           version: 'latest'
 
+      - name: Check kubectl version
+        run: |
+          kubectl version --short
+
       - name: Install Linkerd
         run: |
           curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/install | sh
@@ -38,6 +42,9 @@ jobs:
       - name: Add Linkerd to PATH
         run: |
           echo "$PATH:/home/runner/.linkerd2/bin" >> $GITHUB_PATH
+
+      - name: Validate Linkerd install
+        run: linkerd version
 
       - name: 'Initialize Git submodules'
         run: |
@@ -48,9 +55,7 @@ jobs:
         with:
           cwd: ${{ env.GITHUB_WORKSPACE }}
           serverAddress: ${{ vars.RUNME_ADDRESS }}
-          run: |
-            pwd
-            npx bats ./tests/runme/getting-started.bats
+          run: npx bats ./tests/runme/getting-started.bats
         env:
           NO_COLOR: true
           FROM_CI: true
