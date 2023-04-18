@@ -48,7 +48,9 @@ jobs:
         with:
           cwd: ${{ env.GITHUB_WORKSPACE }}
           serverAddress: ${{ vars.RUNME_ADDRESS }}
-          run: npx bats ${{ env.GITHUB_WORKSPACE }}/tests/runme/getting-started.bats
+          run: |
+            pwd
+            npx bats ${{ env.GITHUB_WORKSPACE }}/tests/runme/getting-started.bats
         env:
           NO_COLOR: true
           FROM_CI: true
