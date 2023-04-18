@@ -46,6 +46,7 @@ jobs:
       - name: Start Runme Server
         uses: stateful/runme-action@v1
         with:
+          cwd: ${{ env.GITHUB_WORKSPACE }}
           serverAddress: ${{ vars.RUNME_ADDRESS }}
           run: npx bats ${{ env.GITHUB_WORKSPACE }}/tests/runme/getting-started.bats
         env:
