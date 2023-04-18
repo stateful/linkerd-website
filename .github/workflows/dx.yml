@@ -50,7 +50,7 @@ jobs:
         run: |
           git submodule update --init
       
-      - name: Start Runme Server
+      - name: Run Bats Tests
         uses: stateful/runme-action@v1
         with:
           cwd: ${{ env.GITHUB_WORKSPACE }}
