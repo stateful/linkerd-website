@@ -6,7 +6,7 @@ runme:
 
 # Running Linkerd Getting Started Guide in CI
 
-[![](https://badgen.net/badge/Open%20with/Runme/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://www.runme.dev/api/runme?repository=git%40github.com%3Astateful%2Flinkerd-website.git&fileToOpen=tests/runme/README.md)
+[![](https://badgen.net/badge/Open%20with/Runme/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=git%40github.com%3Astateful%2Flinkerd-website.git&fileToOpen=tests/runme/README.md)
 
 For a better experience reading this file, we recommend opening it with [Runme](https://runme.dev/).
 
